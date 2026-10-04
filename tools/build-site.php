@@ -117,7 +117,7 @@ foreach ($index['builds'] as $build) {
     $rep = $safe($build['label']);
     foreach (array_keys($build['classes']) as $slug) {
         $safe($slug);
-        $title = $classNames[$slug].' - '.$build['label'].' - WoW Vanilla Talents Viewer';
+        $title = $classNames[$slug].' - '.$build['label'].' - WoW Alpha and Vanilla Talents Calculator';
         $write("$treeDir/$rep/$slug/index.html", strtr($treePage, [
             '%ROOT%' => SITE_ROOT_FROM_TREE_PAGE,
             '%TITLE%' => $h($title),

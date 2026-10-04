@@ -12,7 +12,7 @@ loadIndex().then((index) => {
     const buildB = findBuild(index, params.get('b') ?? '');
     if (!cls || !buildA || !buildB) return; // compare-tree.js shows the error message
 
-    document.title = `${cls.name} - ${buildA.label} vs ${buildB.label} - WoW Vanilla Talents Viewer`;
+    document.title = `${cls.name} - ${buildA.label} vs ${buildB.label} - WoW Alpha and Vanilla Talents Calculator`;
 
     const iconUrl = imageUrl('class-icons', cls.iconPath);
     if (iconUrl) {

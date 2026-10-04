@@ -1,4 +1,4 @@
-# Standalone (GitHub Pages) версия WoW Vanilla Talents Viewer
+# Standalone (GitHub Pages) версия WoW Alpha and Vanilla Talents Calculator
 
 Статический вариант сайта без PHP/MySQL на проде. Исходный проект с экстрактором, БД и
 Symfony-версией остаётся в `../wow-talents-viewer` и служит только как источник данных
