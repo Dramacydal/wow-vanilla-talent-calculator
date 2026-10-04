@@ -1,8 +1,11 @@
-# WoW Vanilla Talents Viewer (static)
+# WoW Alpha and Vanilla Talents Calculator
 
-Static build of the talent viewer: browse and plan WoW Vanilla (0.7.0-1.12.x) talent trees for
-any historical client build, and compare two builds. Runs entirely in the browser - no server, no
-database. See [PLAN.md](PLAN.md) for the design and the decisions behind it.
+**Live site: https://dramacydal.github.io/wow-vanilla-talent-calculator/**
+
+Browse and plan World of Warcraft Alpha and Vanilla talent trees for any historical client
+build (0.7.0 - 1.12.x), and compare two builds to see exactly what changed. Runs entirely in
+the browser - no server, no database. See [PLAN.md](PLAN.md) for the design and the decisions
+behind it.
 
 - `docs/` - the site (published by GitHub Pages from `/docs`). Hand-written files plus the
   generated `docs/tree/` pages.
