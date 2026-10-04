@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" data-root="../../../">
+<head>
+    <meta charset="UTF-8">
+    <title>Druid - 1.1.1.4062 - WoW Vanilla Talents Viewer</title>
+    <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../assets/css/app.css">
+    <link rel="stylesheet" href="../../../assets/css/talent-tree.css">
+    <script type="importmap">{"imports":{"vue":"../../../assets/lib/vue.esm-browser.js"}}</script>
+    <script type="module" src="../../../assets/js/tree-page.js"></script>
+</head>
+<body>
+    <div class="tt-picker">
+        <a class="tt-picker-home" href="../../../">&larr; Builds</a>
+        <form id="tt-picker-form">
+            <select name="build"></select>
+        </form>
+        <div class="tt-class-picker" id="tt-class-picker"></div>
+        <button id="tt-settings-gear" class="tt-settings-gear" type="button" title="Settings">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+        </button>
+    </div>
+    <div id="talent-tree-app" data-build="1.1.1.4062" data-class="druid"></div>
+    <div id="tt-settings-overlay" class="tt-settings-overlay" hidden>
+        <div class="tt-settings-modal">
+            <h2>Settings</h2>
+            <label class="tt-settings-row">
+                <input id="tt-setting-sort-alpha" type="checkbox">
+                Sort tabs alphabetically
+            </label>
+            <label class="tt-settings-row">
+                <input id="tt-setting-show-id" type="checkbox">
+                Show talent ID in tooltip
+            </label>
+            <button id="tt-settings-close" class="tt-settings-close" type="button">Close</button>
+        </div>
+    </div>
+</body>
+</html>

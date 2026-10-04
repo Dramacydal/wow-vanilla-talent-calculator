@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Not found - WoW Vanilla Talents Viewer</title>
+    <style>
+        body { background: #0b0908; color: #d8cdb8; font-family: "Segoe UI", Arial, sans-serif; text-align: center; padding: 80px 16px; }
+        a { color: #c9a227; }
+    </style>
+</head>
+<body>
+    <h1>Page not found</h1>
+    <p>That build or class doesn't exist here.</p>
+    <p><a id="home" href="/">Back to the build list</a></p>
+    <script>
+        // GitHub Pages serves this file for any unknown path, at any depth - find the site root
+        // from the first segment when the site lives under /<repo>/.
+        var seg = location.pathname.split('/')[1];
+        if (location.hostname.endsWith('github.io') && seg) document.getElementById('home').href = '/' + seg + '/';
+    </script>
+</body>
+</html>

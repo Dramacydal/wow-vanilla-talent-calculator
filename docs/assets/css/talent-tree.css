@@ -1,0 +1,580 @@
+/* The UA stylesheet's `[hidden] { display: none }` loses to ANY same-specificity author
+   rule that sets `display` on the same element (cascade order, not a bug) - bit twice
+   already on .class-icon/.tt-settings-overlay before adding this once, globally, with
+   !important so no future `hidden`-toggled element can silently un-hide again. See
+   .claude-docs/gotchas.md. */
+[hidden] {
+    display: none !important;
+}
+
+:root {
+    --tt-cell: 44px;
+    --tt-gap: 22px;
+    --tt-bg: #0b0908;
+    --tt-panel: #17130f;
+    --tt-panel-border: #4a3a22;
+    --tt-gold: #c9a227;
+    --tt-text: #d8cdb8;
+    --tt-text-dim: #8a8070;
+}
+
+body {
+    background: var(--tt-bg);
+    color: var(--tt-text);
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.tt-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 16px 60px;
+}
+
+.tt-picker {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 12px 16px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.tt-picker-home {
+    color: var(--tt-text-dim);
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.tt-picker-home:hover {
+    color: var(--tt-gold);
+}
+
+.tt-picker select {
+    background: var(--tt-panel);
+    border: 1px solid var(--tt-panel-border);
+    color: var(--tt-text);
+    border-radius: 4px;
+    padding: 5px 8px;
+    font-size: 13px;
+}
+
+.tt-picker select:hover {
+    border-color: var(--tt-gold);
+}
+
+.tt-class-picker {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tt-class-icon {
+    display: block;
+    line-height: 0;
+}
+
+.tt-class-icon-img {
+    display: block;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    border: 1px solid var(--tt-panel-border);
+    transition: border-color 0.15s, transform 0.15s;
+}
+
+.tt-class-icon:hover .tt-class-icon-img {
+    border-color: var(--tt-gold);
+    transform: translateY(-1px);
+}
+
+.tt-class-icon--active .tt-class-icon-img {
+    border-color: var(--tt-gold);
+    box-shadow: 0 0 0 1px var(--tt-gold);
+}
+
+.tt-settings-gear {
+    margin-left: auto;
+    background: var(--tt-panel);
+    border: 1px solid var(--tt-panel-border);
+    color: var(--tt-text-dim);
+    border-radius: 4px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.tt-settings-gear:hover {
+    border-color: var(--tt-gold);
+    color: var(--tt-gold);
+}
+
+.tt-settings-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+}
+
+.tt-settings-modal {
+    background: var(--tt-panel);
+    border: 1px solid var(--tt-panel-border);
+    border-radius: 8px;
+    padding: 20px;
+    width: 340px;
+    max-width: calc(100vw - 32px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+}
+
+.tt-settings-modal h2 {
+    margin: 0 0 16px;
+    color: var(--tt-gold);
+    font-size: 16px;
+}
+
+.tt-settings-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    color: var(--tt-text);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.tt-settings-row input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.tt-settings-close {
+    margin-top: 16px;
+    width: 100%;
+    background: #2a1f14;
+    border: 1px solid var(--tt-panel-border);
+    color: var(--tt-text);
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.tt-settings-close:hover {
+    border-color: var(--tt-gold);
+    color: var(--tt-gold);
+}
+
+.tt-header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+    color: var(--tt-gold);
+    margin: 0 0 12px;
+    text-shadow: 0 1px 2px #000;
+}
+
+.tt-header-icon {
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 4px;
+    vertical-align: -0.35em;
+}
+
+.tt-summary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    background: var(--tt-panel);
+    border: 1px solid var(--tt-panel-border);
+    border-radius: 6px;
+    padding: 8px 14px;
+    margin-bottom: 20px;
+}
+
+.tt-summary-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--tt-text-dim);
+}
+
+.tt-summary-item img {
+    border-radius: 3px;
+}
+
+.tt-summary-total {
+    margin-left: auto;
+    font-weight: bold;
+    color: var(--tt-gold);
+}
+
+.tt-level-picker {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--tt-text-dim);
+}
+
+.tt-level-picker input[type="range"] {
+    accent-color: var(--tt-gold);
+}
+
+.tt-level-picker-value {
+    color: var(--tt-gold);
+    font-weight: bold;
+    min-width: 1.5em;
+    text-align: right;
+}
+
+.tt-reset {
+    background: #2a1f14;
+    border: 1px solid var(--tt-panel-border);
+    color: var(--tt-text);
+    border-radius: 4px;
+    padding: 4px 12px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.tt-reset:hover {
+    border-color: var(--tt-gold);
+    color: var(--tt-gold);
+}
+
+.tt-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    justify-content: center;
+}
+
+.tt-tab {
+    position: relative;
+    background-color: #0c0a08;
+    border: 1px solid var(--tt-panel-border);
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* Header bar (icon + name) gets a flat gold-on-black gradient - NOT the real client art,
+   which lives only in .tt-tab-art below. Matches the look the panel had before any real
+   background was extracted. */
+.tt-tab-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--tt-gold);
+    margin: 0;
+    padding: 10px 10px 6px;
+    background: linear-gradient(180deg, rgba(46, 36, 20, 0.9) 0%, rgba(12, 10, 8, 0.95) 100%);
+    border-bottom: 1px solid var(--tt-panel-border);
+    border-radius: 8px 8px 0 0;
+}
+
+.tt-tab-title img {
+    border-radius: 4px;
+    border: 1px solid var(--tt-panel-border);
+}
+
+.tt-tab-points {
+    margin-left: auto;
+    color: var(--tt-text-dim);
+    font-weight: normal;
+    font-size: 12px;
+}
+
+/* The real client background art (4 quadrants, URLs set inline per tab in JS - see
+   gotchas.md/architecture.md). The raw quadrant PNGs are 320x384 total, but ~64px on the
+   right and ~54px on the bottom are fully transparent in the source texture (meant to be
+   covered by the client's separate frame chrome, which we don't extract) - the real opaque
+   art is only the top-left 300x330 of that canvas. Each corner below crops to exactly that
+   opaque portion (via oversized background-size + top-left position, letting the unwanted
+   part hang off its own box and get clipped) and stretches it to fill the tree area
+   completely, at whatever size the grid's content ends up needing - full-bleed by design,
+   not aspect-locked, per explicit request. */
+.tt-tab-art {
+    position: relative;
+    background-color: #0c0a08;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.tt-tab-art-corner {
+    position: absolute;
+    background-repeat: no-repeat;
+}
+
+/* Percentages below all derive from the 300x330 opaque region: top-left keeps its full
+   256x256 (no crop needed, it's entirely opaque); top-right/bottom-left/bottom-right each
+   crop away the transparent slice of their native 64px width and/or 128px height. */
+.tt-tab-art-corner.tl {
+    left: 0;
+    top: 0;
+    width: 85.3333%;
+    height: 77.5758%;
+    background-size: 100% 100%;
+    background-position: left top;
+}
+
+.tt-tab-art-corner.tr {
+    left: 85.3333%;
+    top: 0;
+    width: 14.6667%;
+    height: 77.5758%;
+    background-size: 145.4545% 100%;
+    background-position: left top;
+}
+
+.tt-tab-art-corner.bl {
+    left: 0;
+    top: 77.5758%;
+    width: 85.3333%;
+    height: 22.4242%;
+    background-size: 100% 172.973%;
+    background-position: left top;
+}
+
+.tt-tab-art-corner.br {
+    left: 85.3333%;
+    top: 77.5758%;
+    width: 14.6667%;
+    height: 22.4242%;
+    background-size: 145.4545% 172.973%;
+    background-position: left top;
+}
+
+.tt-tab-art::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at center, rgba(20, 14, 8, 0.15) 0%, rgba(8, 6, 4, 0.6) 75%),
+        linear-gradient(160deg, rgba(20, 14, 8, 0.25), rgba(8, 6, 4, 0.4));
+    box-shadow: inset 0 0 30px 10px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+
+/* Only .tt-grid needs lifting above the ::before vignette - NOT the 4 corner divs above,
+   which must stay position:absolute (a generic ">​ *" here previously matched them too and
+   silently downgraded them to position:relative, collapsing their percentage heights into
+   normal flow and pushing the whole grid hundreds of px down the page). */
+.tt-tab-art > .tt-grid {
+    position: relative;
+}
+
+.tt-grid {
+    position: relative;
+    display: grid;
+    gap: var(--tt-gap);
+}
+
+.tt-connectors {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    overflow: visible;
+    /* Dark outline around the lines AND arrowheads (filter applies to the whole SVG's
+       painted output, markers included) - no single stroke color reads well against both
+       the darkest and lightest tab background art, so instead of chasing a "neutral" gray,
+       this pulls the line away from whatever is behind it regardless of its brightness.
+       Stacked twice at a small radius to get a near-solid outline rather than one soft blur. */
+    filter: drop-shadow(0 0 1px #000) drop-shadow(0 0 1px #000);
+}
+
+.tt-connectors polyline {
+    fill: none;
+    stroke: #6b6b6b;
+    stroke-width: 4.5;
+}
+
+.tt-connectors polyline.tt-connector-active {
+    stroke: var(--tt-gold);
+}
+
+.tt-cell {
+    box-sizing: border-box;
+    position: relative;
+    width: var(--tt-cell);
+    height: var(--tt-cell);
+    border-radius: 5px;
+    border: 1px solid #000;
+    box-shadow: 0 0 0 1px #3a2e1c;
+    cursor: pointer;
+    background: #1a1510;
+}
+
+.tt-cell img {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    display: block;
+}
+
+/* Soft cornflower-blue glow hugging the icon's inner edge on hover - matches wowhead's
+   own talent-calc hilite overlay (wow.zamimg.com/images/Icon/medium/hilite/default.png,
+   a 38x38 sprite whose bg-position is panned on/off on :hover). Sampled that PNG's own
+   pixels directly: a ~1-2px near-opaque dark rim (~rgb(40,50,69)) then a saturated blue
+   (~rgb(96,128,207)) fading from ~63% to 0% opacity over about 8 of its 38px - i.e. ~21%
+   of the icon's width. rgb(100,130,210) here matches that blue; blur/spread are scaled
+   for our 44px cell to reproduce the same falloff distance.
+   MUST be a separate layer painted on top of the <img>, not a box-shadow on the img (or
+   on .tt-cell) directly - an <img>'s own bitmap always paints over its own/its parent's
+   box-shadow (replaced content paints in a later step than backgrounds/box-shadows), so
+   a shadow placed either way is entirely hidden behind the icon except for a
+   barely-visible sliver leaking through the 1px border gap. An absolutely-positioned
+   ::after, being the last child in paint order, renders above the <img> and shows the
+   full glow - the same layering wowhead itself uses (its hilite <a> is the last child of
+   .iconmedium, on top of the icon's own <ins>). */
+.tt-cell::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 4px;
+    box-shadow: inset 0 0 8px 2px rgba(100, 130, 210, 0.75);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 100ms ease;
+}
+
+.tt-cell:hover::after {
+    opacity: 1;
+}
+
+.tt-cell.tt-locked {
+    cursor: not-allowed;
+}
+
+.tt-cell.tt-locked img {
+    filter: grayscale(1) brightness(0.55);
+}
+
+/* Available to learn right now (tier unlocked, all prerequisites met, not yet maxed).
+   No glow/blur - checked wowhead's actual CSS for this exact state and it's just a plain
+   1px semi-transparent border (rgba(64,191,64,.8)), nothing fancier. */
+.tt-cell.tt-available {
+    box-shadow: 0 0 0 1px rgba(64, 191, 64, 0.8);
+}
+
+.tt-cell.tt-maxed {
+    box-shadow: 0 0 0 1px rgba(255, 209, 0, 0.8);
+}
+
+.tt-cell-rank {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    /* Corner-badge trick: right/bottom 0 puts the badge's own edge flush with the cell's
+       corner, then shifting by 50% of its OWN box moves its center exactly onto that
+       corner point regardless of the badge's rendered width (varies with "0/1" vs
+       "0/10"-style text) - matches wowhead's rank-count placement. */
+    transform: translate(50%, 50%);
+    background: #000;
+    border: 1px solid #3a2e1c;
+    border-radius: 3px;
+    font-size: 10px;
+    line-height: 1;
+    padding: 2px 3px;
+    color: var(--tt-text-dim);
+}
+
+.tt-cell.tt-available .tt-cell-rank {
+    color: #3fd13f;
+}
+
+.tt-cell.tt-maxed .tt-cell-rank {
+    color: var(--tt-gold);
+}
+
+.tt-tooltip {
+    position: fixed;
+    z-index: 100;
+    max-width: 280px;
+    background: #0e0c0a;
+    border: 1px solid var(--tt-gold);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 12px;
+    line-height: 1.4;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+    pointer-events: none;
+}
+
+.tt-tooltip-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.tt-tooltip-id {
+    color: var(--tt-text-dim);
+    font-weight: normal;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+/* Cost/range and cast-time/cooldown lines for "active ability" talents. A lone span (the
+   other side has nothing to show) naturally sits at the start/left with justify-content:
+   space-between - no extra CSS needed for the "shift left when one side is missing" rule. */
+.tt-tooltip-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    color: var(--tt-text);
+    font-size: 11px;
+    margin-bottom: 4px;
+}
+
+.tt-tooltip-desc {
+    color: #ffd100;
+}
+
+/* Matches wowhead's own ".wowhead-tooltip-requirements" class exactly (checked via
+   getComputedStyle on the live tooltip HTML for Sharpened Claws/Concussion Blow) - plain
+   white, not the gold used for the description text below it. */
+.tt-tooltip-requirement {
+    color: #fff;
+    font-size: 11px;
+    margin-bottom: 4px;
+}
+
+.tt-tooltip-next-label {
+    color: var(--tt-text);
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid var(--tt-panel-border);
+}
+
+.tt-tooltip-lock-reason {
+    color: #ff4040;
+    margin-top: 4px;
+    font-size: 11px;
+}
+
+.tt-tooltip-actions {
+    color: #1eff00;
+    margin-top: 8px;
+    font-size: 11px;
+}
+
+.tt-header-members {
+    font-size: 13px;
+    font-weight: normal;
+    color: var(--tt-text-dim);
+    text-shadow: none;
+}

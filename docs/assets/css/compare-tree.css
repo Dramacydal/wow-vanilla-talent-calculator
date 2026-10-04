@@ -1,0 +1,199 @@
+/* Build-comparison page. Reuses .tt-tooltip* from talent-tree.css (imported alongside this
+   file in compare-tree.js) rather than duplicating the tooltip look. */
+
+.cmp-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--tt-gold);
+    text-shadow: 0 1px 2px #000;
+    margin: 0 0 24px;
+}
+
+.cmp-header-icon {
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 4px;
+    vertical-align: -0.35em;
+}
+
+.cmp-header-build-link {
+    color: var(--tt-gold);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--tt-panel-border);
+}
+
+.cmp-header-build-link:hover {
+    border-bottom-color: var(--tt-gold);
+}
+
+.cmp-section {
+    margin-bottom: 24px;
+}
+
+.cmp-section-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--tt-text);
+    font-size: 16px;
+    font-weight: bold;
+    padding: 6px 0;
+    cursor: pointer;
+    text-align: left;
+    border-bottom: 1px solid var(--tt-panel-border);
+    margin-bottom: 8px;
+}
+
+.cmp-section-toggle {
+    color: var(--tt-text-dim);
+    flex-shrink: 0;
+    transition: transform 0.15s;
+}
+
+.cmp-section-toggle-open {
+    transform: rotate(90deg);
+}
+
+.cmp-talent-toggle {
+    cursor: pointer;
+}
+
+.cmp-talent-toggle:hover {
+    color: var(--tt-gold);
+}
+
+.cmp-row-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.cmp-row-block + .cmp-row-block {
+    margin-top: 10px;
+}
+
+.cmp-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    cursor: default;
+}
+
+/* Wraps just the icon+name - deliberately NOT the whole .cmp-row - so the hover/tooltip
+   trigger area excludes sibling content like the "(N)" rank-count badge or the tab name. */
+.cmp-row-hoverable {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.cmp-row-icon {
+    width: 1.3em;
+    height: 1.3em;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+.cmp-row-added { color: #3fd13f; }
+/* Strikethrough goes on .cmp-row-hoverable (icon+name only), NOT on .cmp-row-removed itself -
+   a descendant's `text-decoration: none` does not reliably suppress a line drawn by an
+   ancestor (the line is painted across the ancestor's whole inline box, not per-element), so
+   putting the decoration here would keep bleeding through onto the sibling .cmp-row-tab
+   (tab name - metadata, not part of the removed content) no matter what .cmp-row-tab sets. */
+.cmp-row-removed { color: #ff4040; }
+.cmp-row-removed .cmp-row-hoverable { text-decoration: line-through; text-decoration-color: rgba(255, 64, 64, 0.5); }
+.cmp-row-changed { color: var(--tt-text); }
+
+.cmp-row-rankcount {
+    color: var(--tt-text-dim);
+    font-size: 12px;
+}
+
+/* "(was <icon> OldName)" next to a changed talent/rank header - replaces the old
+   "Name: X -> Y" field-diff line entirely (see rankFields() in compare-tree.js). */
+.cmp-row-was {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--tt-text-dim);
+    font-size: 12px;
+    font-style: italic;
+}
+
+.cmp-row-tab {
+    color: var(--tt-text-dim);
+    font-size: 12px;
+    margin-left: auto;
+}
+
+/* One changed/added/removed rank within a multi-rank talent's breakdown - same indent
+   treatment as .cmp-field-list, so its own nested .cmp-field-list (the rank's field diffs)
+   ends up doubly-indented relative to the group header, for free, just by composition. */
+.cmp-rank-block {
+    padding-left: 30px;
+    border-left: 1px solid var(--tt-panel-border);
+    margin-top: 4px;
+}
+
+.cmp-rank-block .cmp-row {
+    padding: 2px 0;
+}
+
+.cmp-field-list {
+    list-style: none;
+    margin: 0;
+    padding: 2px 0 2px 30px;
+    border-left: 1px solid var(--tt-panel-border);
+}
+
+.cmp-field-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 13px;
+    padding: 2px 0;
+}
+
+.cmp-field-label {
+    color: var(--tt-text-dim);
+    flex-shrink: 0;
+}
+
+/* Same reds/greens as .cmp-row-removed/.cmp-row-added (and .tt-tooltip-lock-reason/
+   .tt-cell-rank in the main tree view) - was a lighter #ff8080/#80ff80 before, which read
+   as a different, mismatched red/green next to everything else on this page. */
+.cmp-field-before {
+    color: #ff4040;
+}
+
+.cmp-field-arrow {
+    color: var(--tt-text-dim);
+}
+
+.cmp-field-after {
+    color: #3fd13f;
+}
+
+/* Inline word-level diff for the Description field (see diffWords() in text-diff.js) -
+   unchanged words stay plain text, changed ones get the same reds/greens as everything else
+   on this page, with a strikethrough on the removed word to tell it apart from the added one
+   without needing a before/after arrow layout. */
+.cmp-diff-text {
+    white-space: pre-wrap;
+}
+
+.cmp-diff-removed {
+    color: #707070;
+    text-decoration: line-through;
+    text-decoration-color: rgba(112, 112, 112, 0.6);
+}
+
+.cmp-diff-added {
+    color: #3fd13f;
+}

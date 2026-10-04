@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" data-root="./">
+<head>
+    <meta charset="UTF-8">
+    <title>WoW Vanilla Talents Viewer</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script type="module" src="assets/js/home.js"></script>
+</head>
+<body>
+    <main class="home">
+        <h1 class="home-title">WoW Vanilla Talents Viewer</h1>
+
+        <div class="home-mode-toggle" role="group" aria-label="Mode">
+            <button type="button" id="home-mode-view" aria-pressed="true">View</button>
+            <button type="button" id="home-mode-compare" aria-pressed="false">Compare</button>
+        </div>
+
+        <div class="home-build-row">
+            <select id="home-build-select" class="home-build-select"></select>
+            <span id="home-build-vs" class="home-build-row-vs" hidden>vs</span>
+            <select id="home-build-select-b" class="home-build-select" hidden></select>
+        </div>
+        <p id="home-build-row-hint" class="home-build-row-hint" hidden>Pick two different builds to compare.</p>
+        <p id="home-build-note" class="home-build-note"></p>
+
+        <div id="home-class-row" class="class-row">
+            <p id="home-class-row-empty" class="class-row-empty" hidden>No classes have talent data on this build.</p>
+        </div>
+        <p id="home-error" class="home-build-row-hint" hidden></p>
+    </main>
+</body>
+</html>

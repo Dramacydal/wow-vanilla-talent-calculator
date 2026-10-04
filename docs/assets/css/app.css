@@ -1,0 +1,174 @@
+/* Landing page. Same dark/gold theme as talent-tree.css (kept duplicated rather than
+   sharing a file across the two separate AssetMapper entrypoints - a handful of variables
+   isn't worth the cross-file @import complexity). */
+
+/* The UA stylesheet's `[hidden] { display: none }` loses to ANY same-specificity author
+   rule that sets `display` on the same element (cascade order, not a bug) - bit twice
+   already on .class-icon/.tt-settings-overlay before adding this once, globally, with
+   !important so no future `hidden`-toggled element can silently un-hide again. See
+   .claude-docs/gotchas.md. */
+[hidden] {
+    display: none !important;
+}
+
+:root {
+    --tt-bg: #0b0908;
+    --tt-panel: #17130f;
+    --tt-panel-border: #4a3a22;
+    --tt-gold: #c9a227;
+    --tt-text: #d8cdb8;
+    --tt-text-dim: #8a8070;
+}
+
+body {
+    background: var(--tt-bg);
+    color: var(--tt-text);
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.home {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 60px 16px;
+    text-align: center;
+}
+
+.home-title {
+    font-size: 28px;
+    color: var(--tt-gold);
+    text-shadow: 0 1px 2px #000;
+    margin: 0 0 32px;
+}
+
+.home-build-select {
+    background: var(--tt-panel);
+    border: 1px solid var(--tt-panel-border);
+    color: var(--tt-text);
+    border-radius: 4px;
+    padding: 8px 14px;
+    font-size: 15px;
+}
+
+.home-build-select:hover {
+    border-color: var(--tt-gold);
+}
+
+.home-mode-toggle {
+    display: inline-flex;
+    margin-bottom: 24px;
+    border: 1px solid var(--tt-panel-border);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.home-mode-toggle button {
+    background: var(--tt-panel);
+    color: var(--tt-text-dim);
+    border: none;
+    padding: 8px 20px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.home-mode-toggle button + button {
+    border-left: 1px solid var(--tt-panel-border);
+}
+
+.home-mode-toggle button[aria-pressed="true"] {
+    background: var(--tt-gold);
+    color: #1a1510;
+    font-weight: bold;
+}
+
+.home-build-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.home-build-row-vs {
+    color: var(--tt-text-dim);
+    font-size: 13px;
+}
+
+.home-build-row-hint {
+    color: #ff4040;
+    font-size: 13px;
+    margin: -32px 0 32px;
+}
+
+.class-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+}
+
+.class-row-empty {
+    color: var(--tt-text-dim);
+}
+
+.class-icon {
+    display: block;
+    text-decoration: none;
+}
+
+
+.class-icon-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    border: 2px solid var(--tt-panel-border);
+    background: var(--tt-panel);
+    color: #1a1510;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    transition: border-color 0.15s, transform 0.15s;
+}
+
+.class-icon:hover .class-icon-label {
+    border-color: var(--tt-gold);
+    transform: translateY(-2px);
+}
+
+.class-icon-img {
+    display: block;
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    border: 2px solid var(--tt-panel-border);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    transition: border-color 0.15s, transform 0.15s;
+}
+
+.class-icon:hover .class-icon-img {
+    border-color: var(--tt-gold);
+    transform: translateY(-2px);
+}
+
+/* Fallback-only now that classes.icon_path is populated (kept for any class missing an
+   icon) - the standard WoW class colors, used everywhere in and around the game (character
+   frames, chat, wowhead itself), not a game asset, just a color code convention. */
+.class-icon--warrior .class-icon-label { background: #c79c6e; }
+.class-icon--paladin .class-icon-label { background: #f58cba; }
+.class-icon--hunter .class-icon-label { background: #abd473; }
+.class-icon--rogue .class-icon-label { background: #fff569; }
+.class-icon--priest .class-icon-label { background: #ffffff; }
+.class-icon--shaman .class-icon-label { background: #0070de; color: #fff; }
+.class-icon--mage .class-icon-label { background: #69ccf0; }
+.class-icon--warlock .class-icon-label { background: #9482c9; color: #fff; }
+.class-icon--druid .class-icon-label { background: #ff7d0a; }
+
+.home-build-note {
+    color: var(--tt-text-dim);
+    font-size: 12px;
+    margin: -12px 0 28px;
+    min-height: 1em;
+}

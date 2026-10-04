@@ -1,0 +1,7 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "site", "runtimeExecutable": "python3", "runtimeArgs": ["-m", "http.server", "8200", "--bind", "127.0.0.1", "--directory", "docs"], "port": 8200 },
+    { "name": "cdn-local", "runtimeExecutable": "python3", "runtimeArgs": ["tools/dev-cdn.py", "8201"], "port": 8201 }
+  ]
+}
